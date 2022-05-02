@@ -8,7 +8,7 @@ public class Cinema {
     private int seatNumber;
     private int numberOfTicketsSold = 0;
     private int currentIncome = 0;
-    private int totalIncome;
+    private int totalIncome = 0;
     private char[][] cinema;
     private final UserInterface ui;
 

@@ -23,6 +23,17 @@ public class UserInterface {
         cinema.setRows(getNumericInput());
     }
 
+    public int getNumericInput() {
+        while (true) {
+            try {
+                System.out.print("> ");
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException numberFormatException) {
+                System.out.println("A numeric input is required!");
+            }
+        }
+    }
+
     private void promptForSeatsPerRow() {
         System.out.println("Enter the number of seats in each row:");
         cinema.setSeatsPerRow(getNumericInput());
@@ -30,13 +41,8 @@ public class UserInterface {
 
     private void getUserInput() {
         while (true) {
-            System.out.println("\n1. Show the seats\n" +
-                    "2. Buy a ticket\n" +
-                    "3. Statistics\n" +
-                    "0. Exit");
-            System.out.print("> ");
-            int option = scanner.nextInt();
-
+            showCinemaOptions();
+            int option = getNumericInput();
             switch (option) {
                 case 1:
                     cinema.showCinema();
@@ -53,6 +59,14 @@ public class UserInterface {
         }
     }
 
+    private void showCinemaOptions() {
+        System.out.println("\n1. Show the seats\n" +
+                "2. Buy a ticket\n" +
+                "3. Statistics\n" +
+                "0. Exit");
+        System.out.print("> ");
+    }
+
     public void promptForRowNumber() {
         System.out.println("\nEnter a row number:");
         cinema.setRowNumber(getNumericInput());
@@ -61,17 +75,5 @@ public class UserInterface {
     public void promptForSeatNumber() {
         System.out.println("Enter a seat number in that row:");
         cinema.setSeatNumber(getNumericInput());
-    }
-
-    public int getNumericInput() {
-        while (true) {
-            try {
-                System.out.print("> ");
-                String input = scanner.nextLine();
-                return Integer.parseInt(input);
-            } catch (NumberFormatException numberFormatException) {
-                System.out.println("A numeric input is required!");
-            }
-        }
     }
 }
