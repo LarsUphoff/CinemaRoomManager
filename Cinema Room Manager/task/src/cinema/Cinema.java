@@ -6,16 +6,22 @@ public class Cinema {
     private int seatsPerRow;
     private int rowNumber;
     private int seatNumber;
-    private int numberOfTicketsSold;
-    private int currentIncome;
+    private int numberOfTicketsSold = 0;
+    private int currentIncome = 0;
     private int totalIncome;
     private char[][] cinema;
     private final UserInterface ui;
 
     public Cinema() {
-        this.numberOfTicketsSold = 0;
-        this.currentIncome = 0;
         ui = new UserInterface(this);
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void setSeatsPerRow(int seatsPerRow) {
+        this.seatsPerRow = seatsPerRow;
     }
 
     public void setCinemaSeats() {
@@ -71,6 +77,18 @@ public class Cinema {
         }
     }
 
+    public void setRowNumber(int rowNumber) {
+        this.rowNumber = rowNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
+    }
+
+    public char getSeatStatus() {
+        return cinema[rowNumber - 1][seatNumber - 1];
+    }
+
     public void updateCinemaSeats() {
         cinema[rowNumber - 1][seatNumber - 1] = 'B';
     }
@@ -95,32 +113,12 @@ public class Cinema {
 
     public void showStatistics() {
         System.out.println("\nNumber of purchased tickets: " + numberOfTicketsSold);
-        System.out.printf("Percentage: %.2f%%%n", percentageOccupied());
+        System.out.printf("Percentage: %.2f%%%n", percentageOfOccupiedSeats());
         System.out.println("Current income: $" + currentIncome);
         System.out.println("Total income: $" + totalIncome);
     }
 
-    public double percentageOccupied() {
+    public double percentageOfOccupiedSeats() {
         return (numberOfTicketsSold * 1.0) / (seatsPerRow * rows) * 100;
-    }
-
-    public char getSeatStatus() {
-        return cinema[rowNumber - 1][seatNumber - 1];
-    }
-
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
-    public void setSeatsPerRow(int seatsPerRow) {
-        this.seatsPerRow = seatsPerRow;
-    }
-
-    public void setRowNumber(int rowNumber) {
-        this.rowNumber = rowNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
     }
 }

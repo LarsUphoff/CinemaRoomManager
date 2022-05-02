@@ -3,11 +3,10 @@ package cinema;
 import java.util.Scanner;
 
 public class UserInterface {
-    private final Scanner scanner;
+    private final Scanner scanner = new Scanner(System.in);
     public final Cinema cinema;
 
     public UserInterface(Cinema cinema) {
-        this.scanner = new Scanner(System.in);
         this.cinema = cinema;
     }
 
@@ -16,11 +15,20 @@ public class UserInterface {
         promptForSeatsPerRow();
         cinema.setCinemaSeats();
         cinema.calculateTotalPossibleIncome();
-
         getUserInput();
     }
 
-    public void getUserInput() {
+    private void promptForNumberOfRows() {
+        System.out.println("Enter the number of rows:");
+        cinema.setRows(getNumericInput());
+    }
+
+    private void promptForSeatsPerRow() {
+        System.out.println("Enter the number of seats in each row:");
+        cinema.setSeatsPerRow(getNumericInput());
+    }
+
+    private void getUserInput() {
         while (true) {
             System.out.println("\n1. Show the seats\n" +
                     "2. Buy a ticket\n" +
@@ -43,16 +51,6 @@ public class UserInterface {
                     return;
             }
         }
-    }
-
-    public void promptForNumberOfRows() {
-        System.out.println("Enter the number of rows:");
-        cinema.setRows(getNumericInput());
-    }
-
-    public void promptForSeatsPerRow() {
-        System.out.println("Enter the number of seats in each row:");
-        cinema.setSeatsPerRow(getNumericInput());
     }
 
     public void promptForRowNumber() {
