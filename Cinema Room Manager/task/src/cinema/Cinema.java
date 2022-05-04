@@ -48,13 +48,12 @@ public class Cinema {
             System.out.print(i + " ");
         }
         System.out.println();
-        int i = 1;
-        for (char[] row : cinema) {
-            System.out.print(i + " ");
-            for (char seat : row) {
+
+        for (int row = 0; row < cinema.length; row++) {
+            System.out.print(row + 1 + " ");
+            for (char seat : cinema[row]) {
                 System.out.print(seat + " ");
             }
-            i++;
             System.out.println();
         }
     }

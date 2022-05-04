@@ -64,7 +64,6 @@ public class UserInterface {
                 "2. Buy a ticket\n" +
                 "3. Statistics\n" +
                 "0. Exit");
-        System.out.print("> ");
     }
 
     public void promptForRowNumber() {
