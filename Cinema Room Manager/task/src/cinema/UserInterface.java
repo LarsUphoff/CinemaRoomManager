@@ -13,9 +13,9 @@ public class UserInterface {
     public void start() {
         promptForNumberOfRows();
         promptForSeatsPerRow();
-        cinema.setCinemaSeats();
+        cinema.setCinemaSeatsToEmpty();
         cinema.calculateTotalPossibleIncome();
-        getUserInput();
+        getMenuSelectionFromUser();
     }
 
     private void promptForNumberOfRows() {
@@ -39,11 +39,13 @@ public class UserInterface {
         cinema.setSeatsPerRow(getNumericInput());
     }
 
-    private void getUserInput() {
+    private void getMenuSelectionFromUser() {
         while (true) {
             showCinemaOptions();
             int option = getNumericInput();
             switch (option) {
+                case 0:
+                    return;
                 case 1:
                     cinema.showCinema();
                     break;
@@ -53,8 +55,6 @@ public class UserInterface {
                 case 3:
                     showStatistics();
                     break;
-                default:
-                    return;
             }
         }
     }

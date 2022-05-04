@@ -24,7 +24,7 @@ public class Cinema {
         this.seatsPerRow = seatsPerRow;
     }
 
-    public void setCinemaSeats() {
+    public void setCinemaSeatsToEmpty() {
         cinema = new char[rows][seatsPerRow];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < seatsPerRow; j++) {
@@ -72,7 +72,7 @@ public class Cinema {
             ui.promptForSeatNumber();
             setSeatNumber(ui.getNumericInput());
         } while (ui.userSelectionIsInvalid());
-        updateCinemaSeats();
+        updateCinemaSeat();
         getTicketPrice();
         increaseNumberOfTicketsSold();
     }
@@ -93,7 +93,7 @@ public class Cinema {
         return cinema[rowNumber - 1][seatNumber - 1];
     }
 
-    public void updateCinemaSeats() {
+    public void updateCinemaSeat() {
         cinema[rowNumber - 1][seatNumber - 1] = 'B';
     }
 
