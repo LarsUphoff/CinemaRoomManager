@@ -82,4 +82,13 @@ public class UserInterface {
         System.out.println("Current income: $" + cinema.getCurrentIncome());
         System.out.println("Total income: $" + cinema.getTotalIncome());
     }
+
+    public void printHighTicketPrice() {
+        System.out.println("Ticket price: $10");
+
+    }
+
+    public void printLowerTicketPrice() {
+        System.out.println("Ticket price: $8");
+    }
 }

@@ -62,7 +62,7 @@ public class Cinema {
         while (true) {
             ui.promptForRowNumber();
             ui.promptForSeatNumber();
-            if (seatNumber > seatsPerRow || rowNumber > rows) {
+            if (selectedSeatIsOutOfRange()) {
                 System.out.println("\nWrong input!\n");
                 continue;
             } else if (getSeatStatus() == 'B') {
@@ -70,10 +70,14 @@ public class Cinema {
                 continue;
             }
             updateCinemaSeats();
-            calculateTicketPrice();
+            getTicketPrice();
             increaseNumberOfTicketsSold();
             break;
         }
+    }
+
+    private boolean selectedSeatIsOutOfRange() {
+        return seatNumber > seatsPerRow || rowNumber > rows;
     }
 
     public void setRowNumber(int rowNumber) {
@@ -92,14 +96,22 @@ public class Cinema {
         cinema[rowNumber - 1][seatNumber - 1] = 'B';
     }
 
-    public void calculateTicketPrice() {
-        if (rows * seatsPerRow <= 60 || rowNumber <= rows / 2) {
-            System.out.println("Ticket price: $10");
+    public void getTicketPrice() {
+        if (cinemaHasMoreThan60Seats() || selectedRowIsInLowerHalf()) {
+            ui.printHighTicketPrice();
             increaseCurrentIncome(10);
         } else {
-            System.out.println("Ticket price: $8");
+            ui.printLowerTicketPrice();
             increaseCurrentIncome(8);
         }
+    }
+
+    private boolean cinemaHasMoreThan60Seats() {
+        return rows * seatsPerRow <= 60;
+    }
+
+    private boolean selectedRowIsInLowerHalf() {
+        return rowNumber <= rows / 2;
     }
 
     public void increaseCurrentIncome(int amount) {
