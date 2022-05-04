@@ -110,14 +110,19 @@ public class Cinema {
         numberOfTicketsSold++;
     }
 
-    public void showStatistics() {
-        System.out.println("\nNumber of purchased tickets: " + numberOfTicketsSold);
-        System.out.printf("Percentage: %.2f%%%n", percentageOfOccupiedSeats());
-        System.out.println("Current income: $" + currentIncome);
-        System.out.println("Total income: $" + totalIncome);
-    }
-
     public double percentageOfOccupiedSeats() {
         return (numberOfTicketsSold * 1.0) / (seatsPerRow * rows) * 100;
+    }
+
+    public int getNumberOfTicketsSold() {
+        return numberOfTicketsSold;
+    }
+
+    public int getCurrentIncome() {
+        return currentIncome;
+    }
+
+    public int getTotalIncome() {
+        return totalIncome;
     }
 }

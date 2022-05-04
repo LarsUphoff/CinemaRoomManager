@@ -51,7 +51,7 @@ public class UserInterface {
                     cinema.sellTicket();
                     break;
                 case 3:
-                    cinema.showStatistics();
+                    showStatistics();
                     break;
                 default:
                     return;
@@ -74,5 +74,12 @@ public class UserInterface {
     public void promptForSeatNumber() {
         System.out.println("Enter a seat number in that row:");
         cinema.setSeatNumber(getNumericInput());
+    }
+
+    private void showStatistics() {
+        System.out.println("\nNumber of purchased tickets: " + cinema.getNumberOfTicketsSold());
+        System.out.printf("Percentage: %.2f%%%n", cinema.percentageOfOccupiedSeats());
+        System.out.println("Current income: $" + cinema.getCurrentIncome());
+        System.out.println("Total income: $" + cinema.getTotalIncome());
     }
 }
