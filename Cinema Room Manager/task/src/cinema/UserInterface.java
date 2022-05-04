@@ -68,12 +68,10 @@ public class UserInterface {
 
     public void promptForRowNumber() {
         System.out.println("\nEnter a row number:");
-        cinema.setRowNumber(getNumericInput());
     }
 
     public void promptForSeatNumber() {
         System.out.println("Enter a seat number in that row:");
-        cinema.setSeatNumber(getNumericInput());
     }
 
     private void showStatistics() {
@@ -90,5 +88,17 @@ public class UserInterface {
 
     public void printLowerTicketPrice() {
         System.out.println("Ticket price: $8");
+    }
+
+    public boolean userSelectionIsInvalid() {
+        if (cinema.selectedSeatIsOutOfRange()) {
+            System.out.println("\nWrong input!\n");
+            return true;
+        } else if (cinema.getSeatStatus() == 'B') {
+            System.out.println("\nThat ticket has already been purchased!\n");
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -48,7 +48,6 @@ public class Cinema {
             System.out.print(i + " ");
         }
         System.out.println();
-
         for (int row = 0; row < cinema.length; row++) {
             System.out.print(row + 1 + " ");
             for (char seat : cinema[row]) {
@@ -59,24 +58,18 @@ public class Cinema {
     }
 
     public void sellTicket() {
-        while (true) {
+        do {
             ui.promptForRowNumber();
+            setRowNumber(ui.getNumericInput());
             ui.promptForSeatNumber();
-            if (selectedSeatIsOutOfRange()) {
-                System.out.println("\nWrong input!\n");
-                continue;
-            } else if (getSeatStatus() == 'B') {
-                System.out.println("\nThat ticket has already been purchased!\n");
-                continue;
-            }
-            updateCinemaSeats();
-            getTicketPrice();
-            increaseNumberOfTicketsSold();
-            break;
-        }
+            setSeatNumber(ui.getNumericInput());
+        } while (ui.userSelectionIsInvalid());
+        updateCinemaSeats();
+        getTicketPrice();
+        increaseNumberOfTicketsSold();
     }
 
-    private boolean selectedSeatIsOutOfRange() {
+    public boolean selectedSeatIsOutOfRange() {
         return seatNumber > seatsPerRow || rowNumber > rows;
     }
 
