@@ -42,12 +42,20 @@ public class Cinema {
     }
 
     public void showCinema() {
+        printNumberOfRows();
+        printRowsAndSeats();
+    }
+
+    private void printNumberOfRows() {
         System.out.println("\nCinema:");
         System.out.print("  ");
         for (int i = 1; i <= seatsPerRow; i++) {
             System.out.print(i + " ");
         }
         System.out.println();
+    }
+
+    private void printRowsAndSeats() {
         for (int row = 0; row < cinema.length; row++) {
             System.out.print(row + 1 + " ");
             for (char seat : cinema[row]) {
