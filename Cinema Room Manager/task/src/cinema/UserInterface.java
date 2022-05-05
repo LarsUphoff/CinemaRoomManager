@@ -74,11 +74,16 @@ public class UserInterface {
         System.out.println("Enter a seat number in that row:");
     }
 
-    private void showStatistics() {
-        System.out.println("\nNumber of purchased tickets: " + cinema.getNumberOfTicketsSold());
-        System.out.printf("Percentage: %.2f%%%n", cinema.percentageOfOccupiedSeats());
-        System.out.println("Current income: $" + cinema.getCurrentIncome());
-        System.out.println("Total income: $" + cinema.getTotalIncome());
+    public boolean userSelectionIsInvalid() {
+        if (cinema.selectedSeatIsOutOfRange()) {
+            System.out.println("\nWrong input!\n");
+            return true;
+        } else if (cinema.getSeatStatus() == 'B') {
+            System.out.println("\nThat ticket has already been purchased!\n");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void printHighTicketPrice() {
@@ -90,15 +95,10 @@ public class UserInterface {
         System.out.println("Ticket price: $8");
     }
 
-    public boolean userSelectionIsInvalid() {
-        if (cinema.selectedSeatIsOutOfRange()) {
-            System.out.println("\nWrong input!\n");
-            return true;
-        } else if (cinema.getSeatStatus() == 'B') {
-            System.out.println("\nThat ticket has already been purchased!\n");
-            return true;
-        } else {
-            return false;
-        }
+    private void showStatistics() {
+        System.out.println("\nNumber of purchased tickets: " + cinema.getNumberOfTicketsSold());
+        System.out.printf("Percentage: %.2f%%%n", cinema.percentageOfOccupiedSeats());
+        System.out.println("Current income: $" + cinema.getCurrentIncome());
+        System.out.println("Total income: $" + cinema.getTotalIncome());
     }
 }

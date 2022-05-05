@@ -77,16 +77,16 @@ public class Cinema {
         increaseNumberOfTicketsSold();
     }
 
-    public boolean selectedSeatIsOutOfRange() {
-        return seatNumber > seatsPerRow || rowNumber > rows;
-    }
-
     public void setRowNumber(int rowNumber) {
         this.rowNumber = rowNumber;
     }
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+    public boolean selectedSeatIsOutOfRange() {
+        return seatNumber > seatsPerRow || rowNumber > rows;
     }
 
     public char getSeatStatus() {
@@ -123,12 +123,12 @@ public class Cinema {
         numberOfTicketsSold++;
     }
 
-    public double percentageOfOccupiedSeats() {
-        return (numberOfTicketsSold * 1.0) / (seatsPerRow * rows) * 100;
-    }
-
     public int getNumberOfTicketsSold() {
         return numberOfTicketsSold;
+    }
+
+    public double percentageOfOccupiedSeats() {
+        return (numberOfTicketsSold * 1.0) / (seatsPerRow * rows) * 100;
     }
 
     public int getCurrentIncome() {
